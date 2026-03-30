@@ -15,11 +15,20 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.when;
-//
+//END 
 
+//la till detta
+@ExtendWith(MockitoExtension.class) //se steg 3.2 i lathunden
 
 
 public class CountryServiceTest {
+
+    //la också till detta, se steg 3.2. i lathunden
+    @Mock
+    CountryApiClient apiClient;
+
+    @InjectMocks
+    CountryService countryService;
 
     @Test
     void getSortedLaungagesReturnsAlphabeticallySortedLangues() {
