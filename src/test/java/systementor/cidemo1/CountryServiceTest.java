@@ -80,7 +80,7 @@ public class CountryServiceTest {
     //<---------------HÄR SKAPAR VI SJÄLVA TESTERNA MED DEN MOCKADE DATAN--------------
 
     @Test
-    void getSortedLaungagesReturnsAlphabeticallySortedLangues() {
+    void getSortedLaungagesReturnsAlphabeticallySortedLanguesMIN() {
         when(apiClient.fetchCountryByName("Latvia"))
             .thenReturn(LATVIA);
 
