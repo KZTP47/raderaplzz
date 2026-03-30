@@ -110,7 +110,8 @@ public class CountryServiceTest {
 
     @Test
     void getSortedLaungagesReturnsAlphabeticallySortedLangues() {
-        when(countryApiClient.fetchCountryByName("Latvia"))
+        //when(countryApiClient.fetchCountryByName("Latvia")) DENNA ÄR FEL
+        when(apiClient.fetchCountryByName("Latvia"))//Ändrade till denna, så att det blir rätt
             .thenReturn(LATVIA);
 
         var result = countryService.getSortedBorders("Latvia");
