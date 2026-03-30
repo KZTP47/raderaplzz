@@ -75,6 +75,39 @@ public class CountryServiceTest {
     // ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️
     // <-------------------------------------------------------------------------
 
+
+    // --- STEG 4: SKRIV TESTER ---
+    //<---------------HÄR SKAPAR VI SJÄLVA TESTERNA MED DEN MOCKADE DATAN--------------
+
+    @Test
+    void getSortedLanguagesReturnsAlphabeticallySortedLanguagesForLatvia() {
+        // HÄR SKER STEG 4: Berätta för mocken vad den ska svara
+        when(apiClient.fetchCountryByName("Latvia"))
+            .thenReturn(LATVIA);
+
+        // Anropa tjänsten (CountryService använder nu mocken automatiskt)
+        var result = countryService.getSortedLanguages("Latvia");
+
+        // Kontrollera att språken kommer ut i bokstavsordning (English före Latvian)
+        assertEquals(List.of("English", "Latvian"), result);
+    }
+
+    @Test
+    void getSortedLanguagesReturnsAlphabeticallySortedLanguagesForKurdistan() {
+        // Berätta för mocken att svara med KURDISTAN-objektet
+        when(apiClient.fetchCountryByName("Kurdistan"))
+            .thenReturn(KURDISTAN);
+
+        var result = countryService.getSortedLanguages("Kurdistan");
+
+        // Kontrollera bokstavsordning (Arabic -> Central Kurdish -> Northern Kurdish)
+        assertEquals(List.of("Arabic", "Central Kurdish", "Northern Kurdish"), result);
+    }
+     //<---------------END--------------
+
+
+    //detta nedan fanns redan i början av övningsuppgiften, så den rörde jag ej
+
     @Test
     void getSortedLaungagesReturnsAlphabeticallySortedLangues() {
         when(countryApiClient.fetchCountryByName("Latvia"))
