@@ -29,6 +29,51 @@ public class CountryServiceTest {
 
     @InjectMocks
     CountryService countryService;
+    //END
+
+    // <------------------------- HÄR SKA SJÄLVA MOCKNINGEN IN! -------------------------
+    // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
+    private static final Country LATVIA = new Country(
+        "Latvia",
+        "Republic of Latvia",
+        "Latvija",
+        "Latvijas Republikas",
+        "Riga",
+        "Europe",
+        "Northern Europe",
+        Map.of(
+            "lav", "Latvian",
+            "eng", "English"
+        ),
+        List.of("EST", "LTU", "RUS", "BLR"),
+        1829000,
+        64559.0,
+        "https://goo.gl/maps/iQpUkh7ghq31ztXs9"
+    );
+    // ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️
+    // <-------------------------------------------------------------------
+    // <------------------------- HÄR ÄR MIN EGNA NYA MOCK! -------------------------
+    // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
+    private static final Country KURDISTAN = new Country(
+        "Kurdistan",
+        "Kurdistan Region",
+        "Kurdistân",
+        "Herêma Kurdistanê",
+        "Erbil",
+        "Asia",
+        "Middle East",
+        Map.of(
+            "ckb", "Central Kurdish",
+            "kmr", "Northern Kurdish",
+            "ara", "Arabic"
+        ),
+        List.of("TUR", "IRN", "SYR", "IRQ"), // Grannar/Gränser
+        60000000,                             // Population (ca)
+        470643.0,                             // Area (km2)
+        "https://goo.gl/maps/kurdistan_map_link"
+    );
+    // ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️ ⬆️
+    // <-------------------------------------------------------------------------
 
     @Test
     void getSortedLaungagesReturnsAlphabeticallySortedLangues() {
