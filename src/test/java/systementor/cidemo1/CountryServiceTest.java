@@ -107,14 +107,28 @@ public class CountryServiceTest {
 
     //detta nedan fanns redan i början av övningsuppgiften, så den rörde jag ej
 
+
+    //denna ger fel
+    //@Test
+    //void getSortedLaungagesReturnsAlphabeticallySortedLangues() {
+        //when(countryApiClient.fetchCountryByName("Latvia")) DENNA ÄR FEL
+     //   when(apiClient.fetchCountryByName("Latvia"))//Ändrade till denna, så att det blir rätt
+      //      .thenReturn(LATVIA);
+
+      //  var result = countryService.getSortedBorders("Latvia");
+
+       // assertEquals(List.of("English", "Latvian"), result);
+    //}
+    //så nu har vi rättat den nedan;
     @Test
     void getSortedLaungagesReturnsAlphabeticallySortedLangues() {
-        //when(countryApiClient.fetchCountryByName("Latvia")) DENNA ÄR FEL
-        when(apiClient.fetchCountryByName("Latvia"))//Ändrade till denna, så att det blir rätt
+        when(apiClient.fetchCountryByName("Latvia"))
             .thenReturn(LATVIA);
 
-        var result = countryService.getSortedBorders("Latvia");
+        // ÄNDRING: Vi hämtar språk (Languages) istället för gränser
+        var result = countryService.getSortedLanguages("Latvia");
 
+        // Nu stämmer det med listan nedanför!
         assertEquals(List.of("English", "Latvian"), result);
     }
 
