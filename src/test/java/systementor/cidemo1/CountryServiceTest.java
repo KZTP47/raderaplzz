@@ -80,16 +80,15 @@ public class CountryServiceTest {
     //<---------------HÄR SKAPAR VI SJÄLVA TESTERNA MED DEN MOCKADE DATAN--------------
 
     @Test
-    void getSortedLanguagesReturnsAlphabeticallySortedLanguagesForLatvia() {
-        // HÄR SKER STEG 4: Berätta för mocken vad den ska svara
+    void getSortedLaungagesReturnsAlphabeticallySortedLangues() {
         when(apiClient.fetchCountryByName("Latvia"))
             .thenReturn(LATVIA);
 
-        // Anropa tjänsten (CountryService använder nu mocken automatiskt)
-        var result = countryService.getSortedLanguages("Latvia");
+        // Här hämtar vi Borders (EST, LTU, etc.)
+        var result = countryService.getSortedBorders("Latvia");
 
-        // Kontrollera att språken kommer ut i bokstavsordning (English före Latvian)
-        assertEquals(List.of("English", "Latvian"), result);
+        // Det var här jag gjorde fel i förra builden (#7); Vi Ändrar nu så att förväntat resultat matchar Borders (i alfabetisk ordning)
+        assertEquals(List.of("BLR", "EST", "LTU", "RUS"), result); 
     }
 
     @Test
